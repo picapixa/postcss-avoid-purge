@@ -1,0 +1,79 @@
+{
+  "name": "postcss-avoid-purge",
+  "version": "1.0.0",
+  "description": "PostCSS plugin that marks the stylesheet as purged and can no longer be purged further",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "purgecss"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test",
+    "test": "jest-ci --coverage && eslint-ci ."
+  },
+  "author": "Raffy Alcoriza <opensource@raffyal.co>",
+  "license": "MIT",
+  "repository": "picapixa/postcss-avoid-purge",
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "peerDependencies": {
+    "postcss": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.6.1",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "clean-publish": "^1.1.8",
+    "eslint": "^7.10.0",
+    "eslint-ci": "^1.0.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "jest-ci": "^0.1.1",
+    "jest-cli": "^26.4.2",
+    "lint-staged": "^10.4.0",
+    "postcss": "^8.1.0",
+    "typescript": "^4.3.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": "eslint --fix"
+  },
+  "eslintConfig": {
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "env": {
+      "node": true,
+      "es6": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:jest/recommended"
+    ],
+    "rules": {
+      "jest/expect-expect": "off"
+    }
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageThreshold": {
+      "global": {
+        "statements": 100
+      }
+    }
+  }
+}
